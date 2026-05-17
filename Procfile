@@ -1,6 +1,1 @@
-web:
-daphne
-core.asgi:application
---port
---bind
-0.0.0.0
+web: daphne -b 0.0.0.0 -p $PORT core.asgi:application
