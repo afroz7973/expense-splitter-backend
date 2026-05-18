@@ -79,9 +79,26 @@ ASGI_APPLICATION = 'core.asgi.application'
 
 
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL', 'postgresql://postgres:postgres@127.0.0.1:5432/expense_splitter'))
-}
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=600
+        )
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'expense_splitter',
+            'USER': 'postgres',
+            'PASSWORD': 'postgres',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
+    }
 
 
 # Password validation
