@@ -27,8 +27,7 @@ SECRET_KEY = 'django-insecure-7mh2ap@dnm@lz1=%h3evelh(z%kmyr$5cd+kga3u1a6dmoo78o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['expense-splitter-backend-production-d0a4.up.railway.app', '192.168.1.3', '127.0.0.1', 'localhost']
-
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
