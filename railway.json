@@ -1,9 +1,7 @@
 {
-  "build": {
-    "builder": "NIXPACKS"
-  },
+  "build": {"builder": "NIXPACKS"},
   "deploy": {
-    "startCommand": "python manage.py migrate && gunicorn core.wsgi:application --config /dev/null --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --log-level debug",
+    "startCommand": "python manage.py migrate && uvicorn core.asgi:application --host 0.0.0.0 --port $PORT",
     "restartPolicyType": "ON_FAILURE"
   }
 }
