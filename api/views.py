@@ -154,7 +154,7 @@ class SettleView(APIView):
 
         ExpenseSplit.objects.filter(
             expense__group_id=group_id,
-            user=request.user,
+            user__in=[request.user, paid_to],
             is_settled=False
         ).update(is_settled=True)
 
